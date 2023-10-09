@@ -5,12 +5,13 @@ import ErrorSpan from '../../../../components/errorSpan'
 import { useStore } from '../../../../context/StoreContext.tsx'
 
 type FormValues = {
+  name: string
   email: string
   password: string
 }
 const Form = () => {
   const {
-    userStore: { login },
+    userStore: { signUp },
   } = useStore()
   const {
     handleSubmit,
@@ -18,11 +19,20 @@ const Form = () => {
     formState: { errors },
   } = useForm<FormValues>({ mode: 'onChange' })
   const onSubmit = async (data: FormValues) => {
-    await login(data)
+    await signUp(data)
   }
 
   return (
     <form className="flex flex-col gap-2 p-4" onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex flex-col gap-1">
+        <Input
+          {...register('name', { required: 'Name is required' })}
+          placeholder="Name"
+        />
+        {errors?.name && (
+          <ErrorSpan>{errors.name.message ?? 'Error'}</ErrorSpan>
+        )}
+      </div>
       <div className="flex flex-col gap-1">
         <Input
           {...register('email', { required: 'Email is required' })}
@@ -47,7 +57,7 @@ const Form = () => {
           <ErrorSpan>{errors.password.message ?? 'Error'}</ErrorSpan>
         )}
       </div>
-      <Button type="submit">Sign In</Button>
+      <Button type="submit">Sign Up</Button>
     </form>
   )
 }

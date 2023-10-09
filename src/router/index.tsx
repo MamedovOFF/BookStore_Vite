@@ -1,15 +1,20 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Auth from '../components/layout/auth'
 import SignIn from '../pages/signIn'
+import SignUp from '../pages/signUp'
+import Default from '../components/layout/default'
 
 const index = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <h1 className="text-3xl font-bold underline text-amber-300">
-        Hello world!
-      </h1>
-    ),
+    element: <Default />,
+    children: [
+      {
+        path: '/',
+        index: true,
+        element: <h1>app</h1>,
+      },
+    ],
   },
   {
     path: '/',
@@ -22,7 +27,7 @@ const index = createBrowserRouter([
       },
       {
         path: 'sign-up',
-        element: <h1>Sign up</h1>,
+        element: <SignUp />,
       },
     ],
   },
