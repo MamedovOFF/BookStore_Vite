@@ -15,7 +15,7 @@ const Default = () => {
   }, [isAuth])
 
   return (
-    <div className="flex flex-col min-h-full">
+    <div className="flex flex-col">
       <Header />
       <div className="bg-cyan-100">
         <div className="container m-auto">

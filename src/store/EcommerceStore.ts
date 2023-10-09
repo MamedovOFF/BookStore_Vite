@@ -4,7 +4,13 @@ import ecommerce from '../api/ecommerce.ts'
 import { deserialize } from '../utils/deserialize.ts'
 
 class EcommerceStore {
-  books: { data: Book[]; pagination: Object }
+  books: {
+    data: Book[]
+    pagination?: {
+      total_pages: number
+      current_page: number
+    }
+  }
   constructor() {
     makeObservable(this, {
       books: observable,
@@ -12,11 +18,10 @@ class EcommerceStore {
     })
     this.books = {
       data: [],
-      pagination: {},
     }
   }
-  async getBooks() {
-    const response = await ecommerce.getBooks()
+  async getBooks(page: number) {
+    const response = await ecommerce.getBooks(page)
     deserialize(response.data).then((res) => {
       this.books = { data: res, pagination: response.data.meta.pagination }
     })

@@ -1,7 +1,11 @@
 import http from '../constants/http.ts'
 
 export default {
-  getBooks() {
-    return http.get('/api/books')
+  getBooks(page: number) {
+    return http.get('/api/books', {
+      params: {
+        page: page,
+      },
+    })
   },
 }
