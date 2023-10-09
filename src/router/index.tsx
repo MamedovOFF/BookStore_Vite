@@ -3,6 +3,7 @@ import Auth from '../components/layout/auth'
 import SignIn from '../pages/signIn'
 import SignUp from '../pages/signUp'
 import Default from '../components/layout/default'
+import Ecommerce from '../pages/ecommerce'
 
 const index = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const index = createBrowserRouter([
       {
         path: '/',
         index: true,
-        element: <h1>app</h1>,
+        element: <Ecommerce />,
       },
     ],
   },

@@ -9,7 +9,7 @@ class UserStore {
       login: action.bound,
       signUp: action.bound,
     })
-    this.isAuth = false
+    this.isAuth = true
   }
   async login(data: { email: string; password: string }) {
     try {
