@@ -1,4 +1,4 @@
-import http from '../config/http.ts'
+import http from '../constants/http.ts'
 
 export default {
   getBooks() {

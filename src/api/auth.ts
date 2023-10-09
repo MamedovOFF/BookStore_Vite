@@ -1,4 +1,4 @@
-import http from '../config/http.ts'
+import http from '../constants/http.ts'
 
 export default {
   getCsrfCookie() {
@@ -9,5 +9,8 @@ export default {
   },
   signUp(data: { email: string; password: string; name: string }) {
     return http.post('/api/sign-up', data)
+  },
+  logOut() {
+    return http.post('/api/logout', {})
   },
 }

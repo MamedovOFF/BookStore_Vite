@@ -8,6 +8,7 @@ class UserStore {
       isAuth: observable,
       login: action.bound,
       signUp: action.bound,
+      logout: action.bound,
     })
     this.isAuth = true
   }
@@ -26,6 +27,14 @@ class UserStore {
     try {
       await auth.signUp(data)
       await this.login({ email: data.email, password: data.password })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  async logout() {
+    try {
+      await auth.logOut()
+      this.isAuth = false
     } catch (e) {
       console.log(e)
     }
