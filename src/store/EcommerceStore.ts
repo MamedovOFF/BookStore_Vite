@@ -20,8 +20,8 @@ class EcommerceStore {
       data: [],
     }
   }
-  async getBooks(page: number) {
-    const response = await ecommerce.getBooks(page)
+  async getBooks(page: number, search?: string) {
+    const response = await ecommerce.getBooks(page, search)
     deserialize(response.data).then((res) => {
       this.books = { data: res, pagination: response.data.meta.pagination }
     })
