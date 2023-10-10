@@ -14,7 +14,6 @@ const BookList = () => {
     getBooks(currentPage)
   }, [currentPage])
 
-  console.log(books.pagination)
   return (
     <div className="mt-10 mb-10">
       <div className="grid grid-cols-4 gap-4 ">

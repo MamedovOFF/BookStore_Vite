@@ -13,4 +13,7 @@ export default {
   logOut() {
     return http.post('/api/logout', {})
   },
+  userInfo() {
+    return http.get(`/api/user-info`)
+  },
 }

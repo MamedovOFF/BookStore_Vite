@@ -10,8 +10,8 @@ const Auth = () => {
     userStore: { isAuth },
   } = useStore()
   const navigate = useNavigate()
+
   useEffect(() => {
-    console.log(isAuth)
     if (isAuth) navigate('/')
   }, [isAuth])
 

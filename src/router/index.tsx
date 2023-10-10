@@ -4,6 +4,7 @@ import SignIn from '../pages/signIn'
 import SignUp from '../pages/signUp'
 import Default from '../components/layout/default'
 import Ecommerce from '../pages/ecommerce'
+import Profile from '../pages/profile'
 
 const index = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const index = createBrowserRouter([
         path: '/',
         index: true,
         element: <Ecommerce />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },

@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 type propsType = {
   total_pages: number
   current_page: number
@@ -5,48 +7,81 @@ type propsType = {
 }
 
 const Pagination = ({ total_pages, current_page, onPageChange }: propsType) => {
-  const pages: Array<number> = []
+  const [pages] = useState<Array<number>>(() => {
+    let temp: Array<number> = []
+    for (let i = 1; i <= total_pages; i++) {
+      temp.push(i)
+    }
+    return temp
+  })
 
-  for (let i = 1; i <= total_pages; i++) {
-    pages.push(i)
-  }
   return (
-    <div className="pagination flex justify-center mt-4">
-      <ul className="flex space-x-2">
-        <li>
+    <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-2">
+      <div>
+        <nav
+          className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+          aria-label="Pagination"
+        >
           <button
-            className="px-3 py-2 rounded-lg bg-cyan-600 text-white"
             onClick={() => {
               if (current_page > 1) onPageChange(current_page - 1)
             }}
+            className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
           >
-            Prev
+            <span className="sr-only">Previous</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
           </button>
-        </li>
-        {pages.map((el) => {
-          return (
-            <li key={el}>
+          {pages.map((el) => {
+            return (
               <button
-                className={`px-3 py-2 rounded-lg  text-white ${
-                  current_page === el ? 'bg-amber-300' : 'bg-cyan-600'
+                key={el}
+                aria-current="page"
+                onClick={() => onPageChange(el)}
+                className={`${
+                  el === current_page ? 'active_button' : 'page_button'
                 }`}
               >
                 {el}
               </button>
-            </li>
-          )
-        })}
-        <li>
+            )
+          })}
           <button
-            className="px-3 py-2 rounded-lg bg-cyan-600 text-white"
             onClick={() => {
               if (current_page < total_pages) onPageChange(current_page + 1)
             }}
+            className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
           >
-            Next
+            <span className="sr-only">Next</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
           </button>
-        </li>
-      </ul>
+        </nav>
+      </div>
     </div>
   )
 }
