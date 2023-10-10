@@ -26,6 +26,14 @@ class EcommerceStore {
       this.books = { data: res, pagination: response.data.meta.pagination }
     })
   }
+
+  async addBook(data: FormData) {
+    try {
+      await ecommerce.addBook(data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 export default EcommerceStore

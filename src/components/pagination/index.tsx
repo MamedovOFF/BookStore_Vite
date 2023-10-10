@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 type propsType = {
   total_pages: number
   current_page: number
@@ -7,14 +5,11 @@ type propsType = {
 }
 
 const Pagination = ({ total_pages, current_page, onPageChange }: propsType) => {
-  const [pages] = useState<Array<number>>(() => {
-    let temp: Array<number> = []
-    for (let i = 1; i <= total_pages; i++) {
-      temp.push(i)
-    }
-    return temp
-  })
+  const pages: Array<number> = []
 
+  for (let i = 1; i <= total_pages; i++) {
+    pages.push(i)
+  }
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-2">
       <div>

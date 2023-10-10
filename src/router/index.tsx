@@ -5,6 +5,7 @@ import SignUp from '../pages/signUp'
 import Default from '../components/layout/default'
 import Ecommerce from '../pages/ecommerce'
 import Profile from '../pages/profile'
+import AddBook from '../pages/addBook'
 
 const index = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const index = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/add-book',
+        element: <AddBook />,
       },
     ],
   },

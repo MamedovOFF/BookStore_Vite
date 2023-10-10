@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 const BookList = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const {
-    ecommerce: { books, getBooks },
+    ecommerceStore: { books, getBooks },
   } = useStore()
 
   useEffect(() => {

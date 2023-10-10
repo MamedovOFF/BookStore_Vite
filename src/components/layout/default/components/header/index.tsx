@@ -22,7 +22,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/add-book"
                 className="text-gray-900 hover:bg-cyan-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
               >
                 Add Book
