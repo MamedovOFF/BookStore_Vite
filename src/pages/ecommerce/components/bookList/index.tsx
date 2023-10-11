@@ -17,7 +17,7 @@ const BookList = () => {
   }, [currentPage, search])
 
   return (
-    <div className="mt-10 mb-10 gap-10 relative flex gap-4">
+    <div className="mt-10 mb-10 relative flex gap-4">
       <div className="sticky top-20 z-10 bg-white p-4 rounded h-full flex flex-col gap-2">
         <Typography>Filters</Typography>
         <Input
