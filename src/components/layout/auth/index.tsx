@@ -16,7 +16,7 @@ const Auth = () => {
   }, [isAuth])
 
   return (
-    <div className="flex flex-col justify-between h-full bg-teal-100">
+    <div className="flex flex-col justify-between min-h-screen bg-light-blue-50">
       <Header />
       <div className="container m-auto">
         <Outlet />

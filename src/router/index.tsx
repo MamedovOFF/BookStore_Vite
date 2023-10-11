@@ -10,6 +10,21 @@ import AddBook from '../pages/addBook'
 const index = createBrowserRouter([
   {
     path: '/',
+    element: <Auth />,
+    children: [
+      {
+        index: true,
+        path: 'sign-in',
+        element: <SignIn />,
+      },
+      {
+        path: 'sign-up',
+        element: <SignUp />,
+      },
+    ],
+  },
+  {
+    path: '/',
     element: <Default />,
     children: [
       {
@@ -24,21 +39,6 @@ const index = createBrowserRouter([
       {
         path: '/add-book',
         element: <AddBook />,
-      },
-    ],
-  },
-  {
-    path: '/',
-    element: <Auth />,
-    children: [
-      {
-        index: true,
-        path: 'sign-in',
-        element: <SignIn />,
-      },
-      {
-        path: 'sign-up',
-        element: <SignUp />,
       },
     ],
   },

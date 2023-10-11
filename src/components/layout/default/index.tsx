@@ -3,6 +3,7 @@ import { useStore } from '../../../context/StoreContext.tsx'
 import { useEffect } from 'react'
 import Header from './components/header'
 import { observer } from 'mobx-react-lite'
+import { Typography } from '@material-tailwind/react'
 
 const Default = () => {
   const {
@@ -21,12 +22,16 @@ const Default = () => {
   }, [isAuth])
 
   return (
-    <div className="flex flex-col bg-cyan-100 min-h-screen">
+    <div className="flex flex-col min-h-screen bg-light-blue-50">
       <Header />
       <div className="container m-auto">
         <Outlet />
       </div>
-      <footer className="p-4 bg-blue-300">footer</footer>
+      <footer className="p-4 bg-light-blue-100">
+        <Typography color="blue-gray" className="font-normal">
+          &copy; 2023 Mamedov_dev
+        </Typography>
+      </footer>
     </div>
   )
 }

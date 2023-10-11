@@ -1,28 +1,13 @@
-import Input from '../../components/input'
-import Button from '../../components/button'
-import { FormEventHandler } from 'react'
-import { observer } from 'mobx-react-lite'
-import { useStore } from '../../context/StoreContext.tsx'
+import BookForm from './components/bookForm.tsx'
+import BookPreview from './components/bookPreview.tsx'
 
 const AddBook = () => {
-  const {
-    ecommerceStore: { addBook },
-  } = useStore()
-  const formSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    await addBook(formData)
-  }
   return (
-    <form
-      onSubmit={formSubmit}
-      className="flex flex-col gap-4 bg-emerald-200 p-4 rounded"
-    >
-      <Input name="title" placeholder="Title" type="text" />
-      <Input name="image" type="file" />
-      <Button type="submit">Send</Button>
-    </form>
+    <div className="flex justify-between gap-2">
+      <BookPreview />
+      <BookForm />
+    </div>
   )
 }
 
-export default observer(AddBook)
+export default AddBook

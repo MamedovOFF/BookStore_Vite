@@ -10,6 +10,7 @@ const Profile = () => {
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
       <img
         // src={user.avatar}
+        src={`${import.meta.env.VITE_API_URL}${user?.avatar}`}
         alt="User Avatar"
         className="w-32 h-32 mx-auto rounded-full mb-4"
       />

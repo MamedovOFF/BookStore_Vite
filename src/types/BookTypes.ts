@@ -4,6 +4,10 @@ export type Book = {
   updated_at: string
   title: string
   author_id: any
+  description: string
+  price: number
+  ISBN: number
+  amount: number
   images: Image[]
 }
 

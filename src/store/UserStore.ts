@@ -11,6 +11,7 @@ class UserStore {
     email_verified_at: boolean | null
     created_at: string
     updated_at: string
+    avatar: string
   } | null
 
   constructor() {
@@ -22,7 +23,7 @@ class UserStore {
       logout: action.bound,
       checkAuth: action.bound,
     })
-    this.isAuth = true
+    this.isAuth = false
     this.user = null
   }
 
