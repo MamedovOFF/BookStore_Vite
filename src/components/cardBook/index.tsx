@@ -12,7 +12,7 @@ import { ruDate } from '../../utils/DateFormater.ts'
 const CardBook = (book: Book) => {
   return (
     <Card className="mt-6">
-      <CardHeader color="blue-gray" className="relative h-56">
+      <CardHeader color="blue-gray" className="relative h-80">
         <img
           src={`${import.meta.env.VITE_API_URL}${book.images[0].url}`}
           alt="card-image"
@@ -23,13 +23,17 @@ const CardBook = (book: Book) => {
           {book.title}
         </Typography>
         <Typography>{book.description.substring(0, 200)}</Typography>
-        <Typography color="blue-gray">Price: {book.price}$</Typography>
       </CardBody>
-      <CardFooter className="pt-0 flex justify-between items-end mt-auto">
-        <Button>Read More</Button>
-        <Typography className="font-normal">
-          {ruDate.format(new Date(book.updated_at))}
+      <CardFooter className="pt-0 flex flex-col gap-2 mt-auto">
+        <Typography color="blue-gray" className="mt-auto">
+          Price: {book.price}$
         </Typography>
+        <div className="flex justify-between items-center">
+          <Button>Read More</Button>
+          <Typography className="font-normal">
+            {ruDate.format(new Date(book.updated_at))}
+          </Typography>
+        </div>
       </CardFooter>
     </Card>
   )

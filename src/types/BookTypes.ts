@@ -3,11 +3,11 @@ export type Book = {
   created_at?: string
   updated_at: string
   title: string
-  author_id: string
+  author_id: number
   description: string
-  price: string
-  ISBN: string
-  amount: string
+  price: number
+  ISBN: number
+  amount: number
   images: Image[]
 }
 

@@ -19,11 +19,11 @@ const BookForm = () => {
   const formSubmit: SubmitHandler<BookCreate> = async (value) => {
     const formData = new FormData()
     formData.append('title', value.title)
-    formData.append('author_id', value.author_id)
+    formData.append('author_id', String(value.author_id))
     formData.append('description', value.description)
-    formData.append('ISBN', value.ISBN)
-    formData.append('price', value.price)
-    formData.append('amount', value.amount)
+    formData.append('ISBN', String(value.ISBN))
+    formData.append('price', String(value.price))
+    formData.append('amount', String(value.amount))
     formData.append('image', value.image[0])
     await addBook(formData)
   }
@@ -65,11 +65,11 @@ const BookForm = () => {
       <Select
         label="Author"
         onChange={(value) => {
-          setValue('author_id', value + '')
+          setValue('author_id', Number(value))
         }}
       >
         {authors.map((el) => {
-          return <Option value={el.id}>{el.name}</Option>
+          return <Option value={`${el.id}`}>{el.name}</Option>
         })}
       </Select>
       <Textarea label="Description" {...register('description')} />
