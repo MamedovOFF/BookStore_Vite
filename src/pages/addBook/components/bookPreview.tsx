@@ -5,6 +5,7 @@ import { computed } from 'mobx'
 import { observer } from 'mobx-react-lite'
 import no_image from '../../../assets/images/no_image.jpeg'
 import { BookCreate } from '../types.ts'
+import { useEffect } from 'react'
 
 const BookPreview = () => {
   const {
@@ -13,9 +14,12 @@ const BookPreview = () => {
   const { watch } = useFormContext<BookCreate>()
   const values = watch()
   const author = computed(() =>
-    authors.find((el) => el.id === values.author_id),
+    authors.find((el) => String(el.id) === String(values.author_id)),
   ).get()
 
+  useEffect(() => {
+    console.log(authors)
+  }, [authors])
   return (
     <div className="w-full bg-white rounded p-4">
       <figure className="relative h-96 w-full">
