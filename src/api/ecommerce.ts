@@ -12,4 +12,7 @@ export default {
   addBook(data: FormData) {
     return http.post('/api/books', data)
   },
+  getAuthors() {
+    return http.get('/api/authors')
+  },
 }

@@ -10,12 +10,11 @@ import { Book } from '../../types/BookTypes.ts'
 import { ruDate } from '../../utils/DateFormater.ts'
 
 const CardBook = (book: Book) => {
-  console.log(book)
   return (
     <Card className="mt-6">
       <CardHeader color="blue-gray" className="relative h-56">
         <img
-          src={`${import.meta.env.VITE_API_URL}${book?.images[0].url}`}
+          src={`${import.meta.env.VITE_API_URL}${book.images[0].url}`}
           alt="card-image"
         />
       </CardHeader>
@@ -26,7 +25,7 @@ const CardBook = (book: Book) => {
         <Typography>{book.description.substring(0, 200)}</Typography>
         <Typography color="blue-gray">Price: {book.price}$</Typography>
       </CardBody>
-      <CardFooter className="pt-0 flex justify-between items-end">
+      <CardFooter className="pt-0 flex justify-between items-end mt-auto">
         <Button>Read More</Button>
         <Typography className="font-normal">
           {ruDate.format(new Date(book.updated_at))}

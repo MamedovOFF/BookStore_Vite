@@ -1,13 +1,13 @@
 export type Book = {
   id: number
-  created_at: string
+  created_at?: string
   updated_at: string
   title: string
-  author_id: any
+  author_id: string
   description: string
-  price: number
-  ISBN: number
-  amount: number
+  price: string
+  ISBN: string
+  amount: string
   images: Image[]
 }
 

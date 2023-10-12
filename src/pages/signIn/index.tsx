@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 import {
   Card,
@@ -20,12 +20,14 @@ const SignIn = () => {
   const {
     userStore: { login },
   } = useStore()
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormValues>({ mode: 'onTouched' })
-  const onSubmit = async (data: FormValues) => {
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     await login(data)
   }
 

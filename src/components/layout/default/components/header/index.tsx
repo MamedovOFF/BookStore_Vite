@@ -6,7 +6,7 @@ import {
   Button,
   IconButton,
 } from '@material-tailwind/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useStore } from '../../../../../context/StoreContext.tsx'
 
 const Header = () => {
@@ -14,13 +14,18 @@ const Header = () => {
     userStore: { logout },
   } = useStore()
   const [openNav, setOpenNav] = useState(false)
-
+  const navigate = useNavigate()
   React.useEffect(() => {
     window.addEventListener(
       'resize',
       () => window.innerWidth >= 960 && setOpenNav(false),
     )
   }, [])
+
+  const logoutButton = async () => {
+    await logout()
+    navigate('/sign-in')
+  }
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -73,7 +78,7 @@ const Header = () => {
             variant="gradient"
             size="sm"
             className="hidden lg:inline-block"
-            onClick={logout}
+            onClick={logoutButton}
           >
             <span>Log Out</span>
           </Button>
@@ -123,7 +128,7 @@ const Header = () => {
           size="sm"
           fullWidth
           className="mb-2"
-          onClick={logout}
+          onClick={logoutButton}
         >
           <span>Log Out</span>
         </Button>

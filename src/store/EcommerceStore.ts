@@ -1,7 +1,8 @@
-import { action, makeObservable, observable } from 'mobx'
+import { action, makeObservable, observable, computed } from 'mobx'
 import { Book } from '../types/BookTypes.ts'
 import ecommerce from '../api/ecommerce.ts'
 import { deserialize } from '../utils/deserialize.ts'
+import { Author } from '../types/AuthorTypes.ts'
 
 class EcommerceStore {
   books: {
@@ -11,14 +12,19 @@ class EcommerceStore {
       current_page: number
     }
   }
+  authors: Array<Author>
   constructor() {
     makeObservable(this, {
       books: observable,
+      authors: observable,
       getBooks: action.bound,
+      getAuthors: action.bound,
+      getAuthor: computed,
     })
     this.books = {
       data: [],
     }
+    this.authors = []
   }
   async getBooks(page: number, search?: string) {
     const response = await ecommerce.getBooks(page, search)
@@ -33,6 +39,19 @@ class EcommerceStore {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  async getAuthors() {
+    try {
+      const response = await ecommerce.getAuthors()
+      this.authors = response.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  get getAuthor() {
+    return this.authors.find((el) => el.id)
   }
 }
 

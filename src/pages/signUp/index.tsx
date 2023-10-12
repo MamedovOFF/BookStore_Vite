@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@material-tailwind/react'
 import { useStore } from '../../context/StoreContext.tsx'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import ErrorSpan from '../../components/errorSpan'
 
 type FormValues = {
@@ -26,7 +26,7 @@ const SignUp = () => {
     register,
     formState: { errors },
   } = useForm<FormValues>({ mode: 'onTouched' })
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     await signUp(data)
   }
 

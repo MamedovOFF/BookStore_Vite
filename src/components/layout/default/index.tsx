@@ -7,7 +7,7 @@ import { Typography } from '@material-tailwind/react'
 
 const Default = () => {
   const {
-    userStore: { isAuth, checkAuth },
+    userStore: { checkAuth },
   } = useStore()
   const navigate = useNavigate()
 
@@ -16,10 +16,6 @@ const Default = () => {
       if (!res) navigate('/sign-in')
     })
   }, [])
-
-  useEffect(() => {
-    if (!isAuth) navigate('/sign-in')
-  }, [isAuth])
 
   return (
     <div className="flex flex-col min-h-screen bg-light-blue-50">
