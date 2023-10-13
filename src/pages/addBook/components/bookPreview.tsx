@@ -11,24 +11,40 @@ const BookPreview = () => {
     ecommerceStore: { authors },
   } = useStore()
   const { watch } = useFormContext<BookCreate>()
+
   const values = watch()
   const author = computed(() =>
     authors.find((el) => el.id === values.author_id),
   ).get()
 
+  // const deleteFile = (el: string) => {
+  //   const filtersFile = [...values.images].filter((file) => file.name !== el)
+  //   setValue('images', filtersFile)
+  // }
+
   return (
     <div className="w-full bg-white rounded p-4">
       <figure className="relative h-96 w-full">
         <Carousel>
-          <img
-            className="h-full w-full rounded-xl object-cover object-center"
-            src={
-              values.image?.length
-                ? URL.createObjectURL(values.image[0] as File)
-                : no_image
-            }
-            alt="nature image"
-          />
+          {!!values?.image?.length ? (
+            Array.from(values.image).map((el) => {
+              return (
+                <div className="h-full w-full relative">
+                  <img
+                    className="h-full w-full rounded-xl object-cover object-center"
+                    src={URL.createObjectURL(el)}
+                    alt="nature image"
+                  />
+                </div>
+              )
+            })
+          ) : (
+            <img
+              className="h-full w-full rounded-xl object-cover object-center"
+              src={no_image}
+              alt="nature image"
+            />
+          )}
         </Carousel>
         <figcaption className="absolute bottom-8 left-2/4 flex w-[calc(100%-4rem)] -translate-x-2/4 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg shadow-black/5 saturate-200 backdrop-blur-sm">
           <div>

@@ -24,7 +24,9 @@ const BookForm = () => {
     formData.append('ISBN', String(value.ISBN))
     formData.append('price', String(value.price))
     formData.append('amount', String(value.amount))
-    formData.append('image', value.image[0])
+    for (let i = 0; i < value.image.length; i++) {
+      formData.append('images[]', value.image[0])
+    }
     await addBook(formData)
   }
 
@@ -99,6 +101,7 @@ const BookForm = () => {
           type="file"
           className="hidden"
           multiple
+          accept="image/png, image/jpeg"
           {...register('image')}
         />
       </div>
