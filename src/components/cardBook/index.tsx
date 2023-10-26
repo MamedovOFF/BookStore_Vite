@@ -8,8 +8,10 @@ import {
 } from '@material-tailwind/react'
 import { Book } from '../../types/BookTypes.ts'
 import { ruDate } from '../../utils/DateFormater.ts'
+import { useNavigate } from 'react-router-dom'
 
 const CardBook = (book: Book) => {
+  const navigate = useNavigate()
   return (
     <Card className="mt-6">
       <CardHeader color="blue-gray" className="relative h-80">
@@ -29,7 +31,9 @@ const CardBook = (book: Book) => {
           Price: {book.price}$
         </Typography>
         <div className="flex justify-between items-center">
-          <Button>Read More</Button>
+          <Button onClick={() => navigate(`/book/${book.id}`)}>
+            Read More
+          </Button>
           <Typography className="font-normal">
             {ruDate.format(new Date(book.updated_at))}
           </Typography>

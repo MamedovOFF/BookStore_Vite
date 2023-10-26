@@ -45,7 +45,7 @@ const Header = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to="/add-book" className="flex items-center hover:opacity-75">
+        <Link to="/book/new" className="flex items-center hover:opacity-75">
           Add Bock
         </Link>
       </Typography>

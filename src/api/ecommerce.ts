@@ -9,6 +9,9 @@ export default {
       },
     })
   },
+  getBook(id: string) {
+    return http.get(`/api/books/${id}`)
+  },
   addBook(data: FormData) {
     return http.post('/api/books', data)
   },

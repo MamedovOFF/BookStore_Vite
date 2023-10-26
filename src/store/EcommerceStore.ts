@@ -33,6 +33,10 @@ class EcommerceStore {
     })
   }
 
+  async getBook(id: string) {
+    const response = await ecommerce.getBook(id)
+    return await deserialize(response.data)
+  }
   async addBook(data: FormData) {
     try {
       await ecommerce.addBook(data)
